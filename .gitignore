@@ -2,3 +2,5 @@ env/
 .idea/
 *.egg-info/
 db.json
+config.json
+pmanager_package/__pycache__/
