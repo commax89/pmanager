@@ -7,7 +7,8 @@ setup(
     packages=find_packages(),
     install_requires=[
         'Click',
-        'tinydb'
+        'tinydb',
+        'gitpython'
     ],
     entry_points='''
         [console_scripts]

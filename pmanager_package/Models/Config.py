@@ -16,19 +16,13 @@ class Config:
         self.__db = TinyDB(db_path)
         self.__query = Query()
 
-    def set_projects_path(self, value):
-        self.__set_data('projects_path', value)
+    def get_data(self, key):
+        doc = self.__db.get(self.__query.key == key)
 
-    def get_project_path(self):
-        return self.__get_data('projects_path')
+        if not doc:
+            return None
 
-    def __get_data(self, key):
-        return self.__db.search(self.__query.key == key)
+        return doc['value']
 
-    def __set_data(self, key, value):
-        data = self.__db.search(self.__query.key == key)
-
-        if data:
-            self.__db.update({'value': value}, self.__query.key == key)
-        else:
-            self.__db.insert({'key': key, 'value': value})
+    def set_data(self, key, value):
+        self.__db.upsert({'key': key, 'value': value}, self.__query.key == key)
