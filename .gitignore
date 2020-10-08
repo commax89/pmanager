@@ -4,3 +4,4 @@ env/
 db.json
 config.json
 pmanager_package/__pycache__/
+*.pyc
